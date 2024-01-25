@@ -1,0 +1,47 @@
+﻿@model ContentPageViewModel
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<div class="about-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="about-items">
+                <button class="collapsible">@Model.StaticPage.Contents[1].LocalizedName</button>
+                <div class="content">
+     <p>@Html.Raw(Model.StaticPage.Contents[1].LocalizedDescription)</p>
+                </div>
+
+
+                <button class="collapsible">@Model.StaticPage.Contents[2].LocalizedName</button>
+                <div class="content">
+                    <p>@Html.Raw(Model.StaticPage.Contents[2].LocalizedDescription).</p>
+                </div>
+                <button class="collapsible">@Model.StaticPage.Contents[3].LocalizedName</button>
+                <div class="content">
+                    <p> @Html.Raw(Model.StaticPage.Contents[3].LocalizedDescription).</p>
+                </div>
+                <button class="collapsible">@Model.StaticPage.Contents[4].LocalizedName</button>
+                <div class="content">
+                    <p> @Html.Raw(Model.StaticPage.Contents[4].LocalizedDescription).</p>
+                </div>
+
+                <script>
+                    var coll = document.getElementsByClassName("collapsible");
+                    var i;
+
+                    for (i = 0; i < coll.length; i++) {
+                      coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight){
+                          content.style.maxHeight = null;
+                        } else {
+                          content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                      });
+                    }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>

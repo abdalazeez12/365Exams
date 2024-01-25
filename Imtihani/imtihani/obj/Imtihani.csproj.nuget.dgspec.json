@@ -1,0 +1,187 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Imtihanii\\Imtihani\\Imtihani\\Imtihani.csproj": {}
+  },
+  "projects": {
+    "E:\\Imtihanii\\Imtihani\\Imtihani\\Imtihani.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Imtihanii\\Imtihani\\Imtihani\\Imtihani.csproj",
+        "projectName": "Imtihani",
+        "projectPath": "E:\\Imtihanii\\Imtihani\\Imtihani\\Imtihani.csproj",
+        "packagesPath": "C:\\Users\\abdal\\.nuget\\packages\\",
+        "outputPath": "E:\\Imtihanii\\Imtihani\\Imtihani\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\abdal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "E:\\aboodHammoud\\CMS": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AspNetCore.Authentication.Cookies.Owin": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.28, )"
+            },
+            "Facebook": {
+              "target": "Package",
+              "version": "[7.0.6, )"
+            },
+            "IbtecarBusiness.Articles": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarBusiness.Catalog": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarBusiness.Core": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarBusiness.Courses": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarBusiness.Security": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarFramework": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarFramework.Abstractions": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarFramework.Apis": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarFramework.Persistance.EntityFramework": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "IbtecarModules.Jwt": {
+              "target": "Package",
+              "version": "[1.6.25, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.4.3, )"
+            },
+            "Microsoft.AspNet.Identity.Owin": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Facebook": {
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.IdentityModel.JsonWebTokens": {
+              "target": "Package",
+              "version": "[6.25.0, )"
+            },
+            "Microsoft.Owin.Host.SystemWeb": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
+            "Microsoft.Owin.Security.Cookies": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
+            "Microsoft.Owin.Security.Facebook": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[110.2.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.25.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

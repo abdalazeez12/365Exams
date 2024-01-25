@@ -1,0 +1,45 @@
+﻿@model ContentPageViewModel
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<!-- Start About
+============================================= -->
+<div class="about-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="about-items">
+                <div class="auto-container">
+                    @{
+                        var x = 0;
+                    }
+                    @for(int i = 0; i < Model.StaticPage.Contents.Count; i++)
+                    {
+                        <article style="margin-bottom:70px">
+                        <div class="row clearfix">
+                                <div class="col-md-7 col-sm-12 col-xs-12 @(i%2==1?"float-left" : "") image-column @(i%2==1?"":"pull-right")">
+                                <div class="clearfix">
+                                    <div class="blog-image-outer">
+                                        <figure class="blog-image"><img src="@Url.Content(Model.StaticPage.Contents[i].ImagePath.FullName)"></figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12 content-column ">
+                                <div class="default-content-box">
+                                    <div class="default-post-title">
+                                        <h2>@Model.StaticPage.Contents[i].LocalizedName</h2>
+                                    </div>
+                                    <div class="content-box">
+                                        <div class="default-post-info"></div>
+                                        @Html.Raw(Model.StaticPage.Contents[i].LocalizedDescription)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End About -->

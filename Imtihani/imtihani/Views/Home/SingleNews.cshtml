@@ -1,0 +1,78 @@
+﻿@model HomeIndexViewModel
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<style>
+    .date{
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1;
+    color: #ffb606;
+    display: block;
+    }
+</style>
+<!-- Start Advisor
+    ============================================= -->
+<div class="advisor-details-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="advisor-info">
+                <!-- Start Thumbnail -->
+                <div class="col-md-7 content">
+                    <div class="course-info-list">
+                        <ul style="display:block !important">
+                            <li>
+                                <h5></h5>
+                            </li>
+                            <li>
+                                <div class="date">
+                                    <strong>@Model.SingleNews.PublishDate.Value.Day</strong> @Model.SingleNews.PublishDate.Value.ToString("MMM, yyyy")
+                                </div>
+                                <h5></h5>
+                            </li>
+                            <li>
+                                <h2></h2>
+                                <h5></h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <br />
+                    <!-- Star Tab Info -->
+                    <div class="tab-info">
+                        <!-- Tab Nav -->
+                        <!-- End Tab Nav -->
+                        <!-- Start Tab Content -->
+                        <div class="tab-content tab-content-info">
+                            <!-- Single Tab -->
+                            <div id="tab1" class="tab-pane fade active in">
+                                <div class="info title">
+                                    @Html.Raw(Model.SingleNews.Description)
+                                </div>
+                            </div>
+                            <!-- End Single Tab -->
+                            <!-- Single Tab -->
+                            <!-- End Single Tab -->
+                        </div>
+                        <!-- End Tab Content -->
+                    </div>
+                    <!-- End Tab Info -->
+
+                </div>
+
+
+                <div class="col-md-5">
+                    <div class="thumb">
+                        <div class="info">
+                            <h4>@Model.SingleNews.Name</h4>
+                      
+                        </div>
+                        <img src="~/img/news.jpg" alt="Thumb">
+                    </div>
+                </div>
+                <!-- End Thumbnail -->
+                <!-- Start Content -->
+                <!-- End Content -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Advisor -->

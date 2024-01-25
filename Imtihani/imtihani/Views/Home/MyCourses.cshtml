@@ -1,0 +1,419 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+
+@inject IHtmlLocalizer<SharedResource> Localizer
+@model StudentProfileViewModel
+@{
+    ViewData["Title"] = "My Courses";
+    List<ExamSubmissionResult> acc = ViewBag.acc;
+}
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    .p {
+        text-align: center;
+        padding-top: 130px;
+    }
+</style>
+<div class="login-area ">
+    <div class="_215b15">
+        <div class="container">
+            <div class="tab-content">
+                <div id="Purchased" class="tab-pane fade in active">
+                    <div class="row" style="margin-bottom:20px ">
+                        @foreach (var item in acc)
+                        {
+                            <div class="col-lg-3 col-md-3" style="height:400px;">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="https://assessment.365exams.com/?assessmentId=@item.AssessmentId" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            @if (@item.Price.HasValue)
+                                            {
+                                                <div class="badge_seller">Paid</div>
+                                            }
+                                            else
+                                            {
+                                                <div class="badge_seller" >Free</div>
+                                            }
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                @item.Duration  @Localizer["Minutes"]
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <a href="https://assessment.365exams.com/?assessmentId=@item.AssessmentId" class="crse14s">@item.Name</a>
+                                        <div class="crse-cate">
+                                            Year ||  @item.GradeName
+                                        </div>
+                                        <div class="purchased_badge">Purchased</div>
+                                        <div class="purchased_badge">
+                                            <a style="color:#fff!important" asp-controller="Home" asp-action="AssessmentDetails">See More</a>
+                                        </div>
+                                        <div class="auth1lnkprce">
+                                            @if (@item.InstructorName != null)
+                                            {
+                                                <p class="cr1fot" style="margin-top: 0px;">By @item.InstructorName</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div id="Assessment" class="tab-pane ">
+                    <div class="_14d25">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div id="Wishlist" class="tab-pane ">
+                    <div class="_14d25">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <a href="course_detail_view.html" class="fcrse_img">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            <div class="badge_seller">Bestseller</div>
+                                            <div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                            </div>
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                2 hours
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        <div class="vdtodt">
+                                            <span class="vdt14">109k views</span>
+                                            <span class="vdt14">15 days ago</span>
+                                        </div>
+                                        <a href="course_detail_view.html" class="crse14s">	Solve linear equations</a>
+                                        <a href="#" class="crse-cate">
+                                            Year 12 | maths
+                                        </a>
+                                        <div class="auth1lnkprce">
+                                            <p class="cr1fot">By <a href="#">DR Ibrahim  </a></p>
+                                            <div class="prce142">$10</div>
+                                            <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

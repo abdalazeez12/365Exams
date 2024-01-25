@@ -1,0 +1,56 @@
+﻿@model ContentPageViewModel
+
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<!-- Start Advisor
+    ============================================= -->
+    <div class="advisor-area carousel-shadow bg-gray default-padding bottom-less bg-cover">
+        <div class="container">
+            <div class="row">
+                <div class="site-heading text-center">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2>Our Team</h2>
+                        <p>
+                            The Office of Academic Advising and Field Experiences for the College of Education, academic advising, field experiences and teacher certification.
+                        </p><p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="advisor-items text-light text-center">
+                @for (int i = 0; i < Model.StaticPage.Contents.Count; i++)
+                    {
+                    <!-- Single item -->
+                    <div class="col-md-3 col-sm-6 single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="@Model.StaticPage.Contents[i].ImagePath" alt="Thumb">
+                                <ul style="text-align: initial;">
+                                    <li class="facebook">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    </li>
+                                    <li class="youtube">
+                                        <a href="#"><i class="fab fa-youtube"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <span></span>
+                                <h4>@Model.StaticPage.Contents[i].LocalizedName</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single item -->
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Advisor -->

@@ -1,0 +1,381 @@
+﻿@using IbtecarBusiness.Core.DataContracts
+@using IbtecarBusiness.Core.Services
+@using IbtecarBusiness.Courses.DataContracts
+@using IbtecarFramework
+@using Imtihani.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+@{
+    List<Assessment> popAsssessments = ViewBag.PopularAssessments as List<Assessment>;
+    IbtecarBusiness.Core.DataContracts.StaticPage About = new IbtecarBusiness.Core.DataContracts.StaticPage();
+    IbtecarBusiness.Core.DataContracts.StaticPage Contact = new IbtecarBusiness.Core.DataContracts.StaticPage();
+    IbtecarBusiness.Core.DataContracts.StaticPage Privacy = new IbtecarBusiness.Core.DataContracts.StaticPage();
+
+
+    if (ViewBag.About != null)
+    {
+        About = ViewBag.About;
+    }
+    if (ViewBag.Contact != null)
+    {
+        Contact = ViewBag.Contact;
+    }
+    if (ViewBag.Privacy != null)
+    {
+        Privacy = ViewBag.Privacy;
+    }
+    string culture = CultureHelper.GetCurrentCulture();
+}
+<!DOCTYPE html>
+<html lang="@(culture == "en-US" ? "en":"ar")">
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Educom - Education & LMS Template">
+
+    <!-- ========== Page Title ========== -->
+    <title>Company name - Education</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="~/img/favicon.png" type="image/x-icon">
+
+    <!-- ========== Start Stylesheet ========== -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/css/flaticon-set.css" rel="stylesheet" />
+    <link href="/css/themify-icons.css" rel="stylesheet" />
+    <link href="/css/magnific-popup.css" rel="stylesheet" />
+    <link href="/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="/css/animate.css" rel="stylesheet" />
+    <link href="/css/bootsnav.css" rel="stylesheet" />
+    <link href="/css/responsive.css" rel="stylesheet" />
+    <!-- ========== End Stylesheet ========== -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5/html5shiv.min.js"></script>
+      <script src="/js/html5/respond.min.js"></script>
+    <![endif]-->
+    <!-- ========== Google Fonts ========== -->
+    @if (culture == "ar-JO")
+    {
+        <link href="/css/style_ar.css" rel="stylesheet">
+        <link href="/css/style2_ar.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans+Arabic&family=Tajawal:wght@700&display=swap" rel="stylesheet">
+    }
+    else
+    {
+        <link href="/css/style.css" rel="stylesheet">
+        <link href="/css/style2.css" rel="stylesheet">
+    }
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Preloader Start -->
+    <div class="se-pre-con"></div>
+    <!-- Preloader Ends -->
+    @if (ViewContext.RouteData.Values["action"].ToString().ToLower() == "index")
+    {
+        <!-- Header
+        ============================================= -->
+        <header id="home">
+
+            <!-- Start Navigation -->
+            <nav class="navbar navbar-default active-bg navbar-fixed white no-background bootsnav">
+
+                <!-- Start Top Search -->
+                <div class="container">
+                    <div class="row">
+                        <div class="top-search">
+                            <div class="input-group">
+                                <form action="#">
+                                    <input type="text" name="text" class="form-control" placeholder="Search">
+                                    <button type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Top Search -->
+
+                <div class="container">
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="~/Index">
+                            <img src="~/img/logo-light.png" class="logo" alt="Logo">
+                            <img src="~/img/logo-dark.png" class="logo-inverse" alt="Logo">
+                        </a>
+                    </div>
+                    <!-- End Header Navigation -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        @await Html.PartialAsync("_TopMenu", ViewBag.TopMenu as IbtecarBusiness.Core.DataContracts.Menu?? new IbtecarBusiness.Core.DataContracts.Menu())
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </nav>
+            <!-- End Navigation -->
+        </header>
+        <!-- End Header -->
+    }
+    else
+    {
+        <!-- Header
+        ============================================= -->
+        <header id="home">
+
+            <!-- Start Navigation -->
+            <nav class="navbar navbar-default attr-border navbar-sticky bootsnav">
+
+                <!-- Start Top Search -->
+                <div class="container">
+                    <div class="row">
+                        <div class="top-search">
+                            <div class="input-group">
+                                <form action="#">
+                                    <input type="text" name="text" class="form-control" placeholder="Search">
+                                    <button type="submit">
+                                        <i class="ti-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Top Search -->
+
+                <div class="container">
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <a class="" href="~/Index">
+                            <img src="~/img/logo-dark.png" class="logo" alt="Logo" style="padding:20px">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        @await Html.PartialAsync("_TopMenu", ViewBag.TopMenu as IbtecarBusiness.Core.DataContracts.Menu?? new IbtecarBusiness.Core.DataContracts.Menu())
+                    </div><!-- /.navbar-collapse -->
+                </div>
+
+            </nav>
+            <!-- End Navigation -->
+
+        </header>
+        <!-- End Header -->
+        <!-- Start Breadcrumb
+        ============================================= -->
+        @* <div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image: url(img/7.jpg);">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12 col-md-12">
+    <h1>@ViewBag.Title</h1>
+    <ul class="breadcrumb">
+    <li><a href="~/"><i class="fas fa-home"></i> Home</a></li>
+    <li class="active">@ViewBag.Title</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>*@
+        <!-- End Breadcrumb -->
+    }
+
+    @RenderBody()
+    <!-- Start Footer
+    ============================================= -->
+    <footer class="bg-dark text-light top-padding">
+        <div class="container">
+            <div class="f-items default-padding">
+                <div class="row">
+                    <!-- Single item -->
+                    <div class="col-md-4 col-sm-4 item equal-height">
+                        <div class="f-item about">
+                            <h4>@About.LocalizedName</h4>
+                            <p class="p-1">
+                                @(culture == "en-US" ? Html.Raw(About.Contents[0].Description) : Html.Raw(About.Contents[0].DescriptionAR))
+                            </p>
+                            <h4>
+                                @Contact.LocalizedName
+                            </h4>
+                            <p class="p-5">
+                                @Contact.Contents[3].LocalizedName : <a href="mailto:@Contact.Contents[3].LocalizedShort">@Contact.Contents[3].LocalizedShort</a><br />
+                                @Contact.Contents[1].LocalizedName : <a style="unicode-bidi: plaintext;" href="tel:@Contact.Contents[1].LocalizedShort">@Contact.Contents[1].LocalizedShort</a><br />
+                                @*                                Mobile: <a href="tel:07777777777"></a><br /> *@
+                                @Contact.Contents[2].LocalizedName : @Contact.Contents[2].LocalizedShort
+                            </p>
+                        </div>
+                        <div>
+                            <ul class="tutor_social_links" style="padding:0">
+                                <li><a href="@ViewBag.FB.ExtraInfo" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="@ViewBag.insta.ExtraInfo" class="ins"><i class="fab ti-instagram"></i></a></li>
+                                <li><a href="@ViewBag.youtube.ExtraInfo" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="@ViewBag.snap.ExtraInfo" class="sc"><i class="fab fa-snapchat"></i></a></li>
+                                <li><a href="@ViewBag.twitter.ExtraInfo" class="tw"><i class="fab fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Single item -->
+                    <!-- Single item -->
+                    <div class="col-md-3 col-sm-3 item equal-height">
+                        <div class="f-item link">
+                            <h4>@Localizer["SupportSystem"]</h4>
+                            <ul>
+                                <li>
+                                    <a href="~/FAQ"><i class="ti-angle-right"></i> @Localizer["HelpFaq"]</a>
+                                </li>
+                                <li>
+                                    <a href="~/Terms"><i class="ti-angle-right"></i> @Localizer["TermsOfServices"]</a>
+                                </li>
+                                <li>
+                                    <a href="~/Privacy"><i class="ti-angle-right"></i>@Localizer["PrivacyPolicy"]</a>
+                                </li>
+                                <li>
+                                    <a href="~/Purchasing"><i class="ti-angle-right"></i> @Localizer["ParchasingPolicy"]</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Single item -->
+                    <!-- Single item -->
+                    <!-- End Single item -->
+                    <!-- Single item -->
+                    <div class="col-md-5 col-sm-5 item equal-height">
+                        <div class="f-item popular-courses">
+                            <h4>@Localizer["PopularAssessment"] </h4>
+                            <ul>
+                                @for (int i = 0; i < popAsssessments.Count; i++)
+                                {
+                                    var assessment = popAsssessments[i];
+                                    <li>
+                                        <div class="thumb">
+                                            <a href="https://assessment.365exams.com/?assessmentId=@assessment.Id">
+                                                <img src="~/img/2.jpg" alt="Thumb">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <a href="https://assessment.365exams.com/?assessmentId=@assessment.Id">@assessment.LocalizedName</a>
+                                            <ul class="meta">
+                                                <li>
+                                                    <i class="fas fa-star-"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </li>
+                                                <li>@*(0) enrolled*@</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Single item -->
+                </div>
+            </div>
+        </div>
+        <!-- Start Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>&copy; @DateTime.Now.Year @Localizer["RightsReserved"] <a href="#"> Ibtecar.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Bottom -->
+    </footer>
+    <!-- End Footer -->
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="/js/jquery-1.12.4.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/equal-height.min.js"></script>
+    <script src="/js/jquery.appear.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/modernizr.custom.13711.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/progress-bar.min.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/js/count-to.js"></script>
+    <script src="/js/YTPlayer.min.js"></script>
+    <script src="/js/loopcounter.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/bootsnav.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="~/js/sweetalert.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script defer>
+        function DetectPreviousUrl() {
+            var url = window.location.href;
+            if (!(url.includes('Register') || url.includes('Login') || url.includes('Logout'))) {
+                setCookie("PreviousUrl", url, 24);
+            }
+        }
+
+        function addReturnUrlToLoginLinks() {
+            var returnUrl = encodeURIComponent(getCookie("PreviousUrl")); // Encode the current URL
+
+            // Find all anchor elements with an href attribute containing ""
+            var loginLinks = document.querySelectorAll('a[href*="@(Url.Content("~/Account/Login"))"]');
+            var registerLinks = document.querySelectorAll('a[href*="@(Url.Content("~/Account/Register"))"]');
+
+            for (var i = 0; i < loginLinks.length; i++) {
+                var href = loginLinks[i].getAttribute('href');
+                // Check if the href attribute already contains a query parameter
+                var separator = href.indexOf('?') !== -1 ? '&' : '?';
+                loginLinks[i].setAttribute('href', href + separator + 'returnUrl=' + returnUrl);
+            }
+        }
+        setTimeout(() => {
+            addReturnUrlToLoginLinks();
+            DetectPreviousUrl();
+        }, 500);
+    </script>
+
+
+    <script>
+        let lang = document.getElementsByTagName("html")[0].lang;
+
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

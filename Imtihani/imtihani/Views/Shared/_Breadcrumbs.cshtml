@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+@model ContentPageViewModel
+<!-- Start Breadcrumb
+============================================= -->
+<div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image: url(@Url.Content(string.IsNullOrEmpty(Model.HeaderImage)?"~/img/7.jpg":Model.HeaderImage)");">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <h1>@Model.StaticPage.LocalizedName</h1>
+                <ul class="breadcrumb">
+                    <li><a href="~/Index"><i class="fas fa-home"></i> @Localizer["Home"]</a></li>
+                    <li class="active">@Model.StaticPage.LocalizedName</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumb -->

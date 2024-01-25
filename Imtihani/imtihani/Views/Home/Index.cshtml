@@ -1,0 +1,697 @@
+﻿@using IbtecarFramework
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+@model Imtihani.Models.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    var ActiveCategoryId = Model.Countries[0].Id;
+    string culture = CultureHelper.GetCurrentCulture();
+
+}
+<style>
+
+
+</style>
+
+<!-- Start Banner
+    ============================================= -->
+<div class="banner-area">
+    <div id="bootcarousel" class="carousel content-less text-light top-pad text-dark slide animate_text" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner carousel-zoom">
+            @for (int i = 0; i < Model.TopSlider.Count; i++)
+            {
+                var item = Model.TopSlider[i];
+                <div class="item @(i==0?"active":"") bg-cover" style="background-image: url(@Url.Content(item.ImagePath.FullName))">
+                    <div class="box-table">
+                        <div class="box-cell shadow dark">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="content">
+                                            <h4 data-animation="animated fadeInUp" >@item.LocalizedName</h4>
+                                            <h2 data-animation="animated fadeInLeft" style="@(culture == "ar-JO" ? "padding:0;" :"")" >@Html.Raw(item.LocalizedDescription)</h2>
+                                            <a data-animation="animated fadeInDown" style="@(culture == "ar-JO" ? "margin:0;" :"")" class="btn btn-light border btn-md" href="#">@item.ExtraInfo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- End Wrapper for slides -->
+            <!-- Left and right controls -->
+            <a class="left carousel-control shadow" href="#bootcarousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control shadow" href="#bootcarousel" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- End Banner -->
+<!-- Start Features
+============================================= -->
+<div class="features-area fixed bottom-less bg-color text-light">
+    <div class="container">
+        <div class="row">
+            <div class="features">
+                <div class="equal-height col-md-3 col-sm-6">
+                    <div class="item mariner">
+                        <a href="@Url.Content(Model.Services[0].Url)">
+                            <div class="icon">
+                                <i class="ti-panel"></i>
+                            </div>
+                            <div class="info">
+                                <h4>@Model.Services[0].LocalizedName</h4>
+                                @Html.Raw(Model.Services[0].LocalizedDescription)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="equal-height col-md-3 col-sm-6">
+                    <div class="item brilliantrose">
+                        <a href="@Url.Content(Model.Services[1].Url)">
+                            <div class="icon">
+                                <i class="ti-ruler-pencil"></i>
+                            </div>
+                            <div class="info">
+                                <h4>@Model.Services[1].LocalizedName</h4>
+                                @Html.Raw(Model.Services[1].LocalizedDescription)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="equal-height col-md-3 col-sm-6">
+                    <div class="item casablanca">
+                        <a href="@Url.Content(Model.Services[2].Url)">
+                            <div class="icon">
+                                <i class="ti-server"></i>
+                            </div>
+                            <div class="info">
+                                <h4>@Model.Services[2].LocalizedName</h4>
+                                @Html.Raw(Model.Services[2].LocalizedDescription)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="equal-height col-md-3 col-sm-6">
+                    <div class="item malachite">
+                        <a href="@Url.Content(Model.Services[3].Url)">
+                            <div class="icon">
+                                <i class="ti-desktop"></i>
+                            </div>
+                            <div class="info">
+                                <h4>@Model.Services[3].LocalizedName</h4>
+                                @Html.Raw(Model.Services[3].LocalizedDescription)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Features -->
+<div class="search-area text-center">
+    <div class="container">
+        <div class="search-course">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="search-content">
+                    <div class="row">
+                        <h2>@Model.StaticPage.Contents[0].LocalizedName</h2>
+                        <form action="Home/Programs">
+                            <input type="text" placeholder="@Localizer["EnterCourseName"]" class="form-control" name="subjectname">
+                            <button type="submit">
+                                @Localizer["SearchAssessments"]
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Search -->
+<!-- Start Weekly Top-->
+@*<div class="weekly-top-items ">
+    <div class="container">
+    <div class="row">
+    <div class="site-heading text-center">
+    <div class="col-md-8 col-md-offset-2">
+    <h2>@Model.StaticPage.Contents[2].LocalizedName</h2>
+    @Html.Raw(Model.StaticPage.Contents[2].LocalizedDescription)
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>*@
+
+<div id="app" class="portfolio-area default-padding">
+    <index-page inline-template v-on:created="handlecreate">
+        <div class="container">
+            <div class="portfolio-items-area text-center">
+                <div class="row">
+                    <div class="col-md-12 portfolio-content">
+                        <div class="mix-item-menu active-theme">
+                            <button v-for="(country,index) in countries" :id="'btn-' + country.id" :class="'btn ' + (index==0?'active':'')+'CorseSelect'" :data-filter="'.' + country.id" @*onclick="CorseSelect()"*@>
+                                <div class="icon">
+                                    <img :src="country.imagePath.fullName" :data-src="country.imagePath.fullName" :alt="country.localizedName" :title="country.localizedName" width="32" height="32" class="lzy lazyload--done" :srcset="country.imagePath.fullName">
+                                    @(culture == "en-US" ? "{{ country.name}}" :"{{ country.nameAR}}")
+                                 </div>
+                            </button>
+                        </div>
+
+                        <!-- End Mixitup Nav-->
+                        <div class="row text-light">
+                            <div id="portfolio-grid" class="portfolio-items col-3" data-filter=".@Model.Countries[0].Id">
+                                @for (int i = 0; i < Model.Grades.Count; i++)
+                                {
+                                    var item = Model.Grades[i];
+                                    <div class="pf-item col-md-3 ceremony col-md-3 @item.CategoryId" style="margin-bottom:30px ;    position: relative;">
+                                        <div class="item-effect top-course-items ">
+                                            <div class="item-effect top-course-items top-course-items ">
+                                                <div class="item ">
+                                                    <i class="fas fa-book-open book-design"></i>
+                                                    <div class="info">
+                                                        <h4 class="my-lable-style dot" style="text-align:center !important; ">
+                                                            <a href="~/Courses/@item.LocalizedName" class="my-lable-style dot">@(culture == "en-US" ? item.Name : item.NameAr) </a>
+                                                        </h4>
+                                                        <p class="my-lable-style dot"  >
+                                                         @(culture == "en-US" ? item.Description : item.DescriptionAr)
+                                                        </p>
+                                                        <div class="meta">
+                                                            <ul class="d-flex flex-column SubjectGrade-design"  >
+                                                                @for (int j = 0; j < Model.Subjects.Count; j++)
+                                                                {
+                                                                    var subject = Model.Subjects[j];
+                                                                    <li>
+                                                                        <form method="get" action="/programs">
+                                                                        <input type="hidden" name="gradeId" value="@item.Id">
+                                                                        <input type="hidden" name="subjectId" value="@subject.Id">
+                                                                        <input type="hidden" name="gradename" value="@item.Name">
+                                                                        <input type="hidden" name="subjectname" value="@subject.Name">
+                                                                            <input type="submit" class="shapebtn" id="subjectsFilter" value="@(culture == "en-US" ? subject.Name: subject.NameAr)">
+                                                                        </form>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+
+                        @*<div class="row text-light">
+                        <div id="portfolio-grid" class="portfolio-items col-3" data-filter=".@Model.Countries[0].Id">
+                        <div v-for="grade in grades" :class="'pf-item ceremony ' + grade.categoryId">
+                        <div class="item-effect top-course-items ">
+                        <div class="item-effect top-course-items top-course-items ">
+                        <div class="item">
+                        <div class="info">
+                        <h4 class="my-lable-style">
+                        <a :href="'/Courses/' + grade.localizedName" class="my-lable-style">{{grade.name}} </a>
+                        </h4>
+                        <p class="my-lable-style">
+                        {{grade.description}}
+                        </p>
+                        <div class="meta">
+                        <ul class="d-flex flex-column">
+                        <li v-for="subject in subjects">
+                        <a :href="'/Programs/' + subject.name">{{subject.name}}</a>
+                        </li>
+                        </ul>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </index-page>
+</div>
+
+<!-- End Weekly Top -->
+<!-- Start Search
+============================================= -->
+<!-- Start Popular Courses
+============================================= -->
+<div class="popular-courses-area bg-dark active-dots carousel-shadow weekly-top-items default-padding">
+    <!-- Fidex BG -->
+    <div class="fixed-bg" style="background-image: url(/img/bg.png);"></div>
+    <!-- End Fidex BG -->
+    <div class="container">
+        <div class="row">
+            <div class="site-heading text-light text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>@Html.Raw(Model.StaticPage.Contents[3].LocalizedName)</h2>
+                    <p>
+                        @Html.Raw(Model.StaticPage.Contents[3].LocalizedDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 float-left">
+                <div class="top-course-items courses-carousel owl-carousel owl-theme">
+                    @for (int i = 0; i < Model.PopularAssessments.Count; i++)
+                    {
+                        var assessment = Model.PopularAssessments[i];
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="/img/800x600.jpg" alt="Thumb">
+                                <div class="overlay">
+
+                                    <ul>
+                                        <li><i class="fas fa-clock"></i> @(culture == "en-US" ? assessment.GradeName : assessment.GradeNameAr)</li>
+                                        <li><i class="fas fa-clock"></i> @assessment.Duration </li>
+                                        @*<li><i class="fas fa-list-ul"></i> 65</li>*@
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <div class="lable-curve">@assessment.LocalizedCategoryName</div>
+
+                                <h4>
+                                    <a href="#">@(culture == "en-US" ? assessment.Name : assessment.NameAr) </a>
+                                </h4>
+                                <p>
+                                    @Html.Raw((culture == "en-US" ? assessment.Description : assessment.DescriptionAr))
+                                </p>
+                                <div class="meta">
+                                    <ul>
+                                        <li>
+                                            <a href="#">@(culture == "en-US" ? assessment.SubjectName : assessment.SubjectNameAr)</a>
+                                            @*<a href="#">131 skills</a>*@
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <span>(0)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="footer-meta">
+                                    <a class="btn btn-theme effect btn-sm" href="https://assessment.365exams.com/?assessmentId=@assessment.Id"> @Localizer["ViewAssessments"]</a>
+                                    <h4>@(assessment.Price.HasValue ? assessment.Price.Value.ToString("0.00") + "JOD " : "Free")</h4>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*<div class="item">
+                    <div class="thumb">
+                    <img src="img/800x600.jpg" alt="Thumb">
+                    <div class="overlay">
+
+                    <ul>
+                    <li><i class="fas fa-clock"></i> Grade 12</li>
+                    <li><i class="fas fa-clock"></i> 08:27:00</li>
+                    <li><i class="fas fa-list-ul"></i> 65</li>
+                    </ul>
+                    </div>
+                    </div>
+                    <div class="info">
+                    <div class="lable-curve">G12</div>
+
+                    <h4>
+                    <a href="#">Math </a>
+                    </h4>
+                    <p>
+                    Put description here Put description here Put description here Put description here Put description here Put description here
+                    </p><div class="meta">
+                    <ul>
+                    <li>
+                    <a href="#">Math</a>
+                    <a href="#">131 skills</a>
+                    </li>
+                    <li>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(1k)</span>
+                    </li>
+                    </ul>
+                    </div>
+                    <div class="footer-meta">
+                    <a class="btn btn-theme effect btn-sm" href="#">View assessments</a>
+                    <h4>$23.00</h4>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="item">
+                    <div class="thumb">
+                    <img src="img/800x600.jpg" alt="Thumb">
+                    <div class="overlay">
+                    <ul>
+                    <li><i class="fas fa-clock"></i> Grade 12</li>
+                    <li><i class="fas fa-clock"></i> 08:27:00</li>
+                    <li><i class="fas fa-list-ul"></i> 65</li>
+                    </ul>
+                    </div>
+                    </div>
+                    <div class="info">
+                    <div class="lable-curve">G12</div>
+                    <h4>
+                    <a href="#">Math </a>
+                    </h4>
+                    <p>
+                    Put description here Put description here Put description here Put description here Put description here Put description here
+                    </p>
+                    <div class="meta">
+                    <ul>
+                    <li>
+                    <a href="#">Math</a>
+                    <a href="#">131 skills</a>
+                    </li>
+                    <li>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(1k)</span>
+                    </li>
+                    </ul>
+                    </div>
+                    <div class="footer-meta">
+                    <a class="btn btn-theme effect btn-sm" href="#">View assessments</a>
+                    <h4>$23.00</h4>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="item">
+                    <div class="thumb">
+                    <img src="img/800x600.jpg" alt="Thumb">
+                    <div class="overlay">
+
+                    <ul>
+                    <li><i class="fas fa-clock"></i> Grade 12</li>
+                    <li><i class="fas fa-clock"></i> 08:27:00</li>
+                    <li><i class="fas fa-list-ul"></i> 65</li>
+                    </ul>
+                    </div>
+                    </div>
+                    <div class="info">
+                    <div class="lable-curve">G12</div>
+
+                    <h4>
+                    <a href="#">Math </a>
+                    </h4>
+                    <p>
+                    Put description here Put description here Put description here Put description here Put description here Put description here
+
+                    </p><div class="meta">
+                    <ul>
+                    <li>
+                    <a href="#">Math</a>
+                    <a href="#">131 skills</a>
+                    </li>
+                    <li>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(1k)</span>
+                    </li>
+                    </ul>
+                    </div>
+                    <div class="footer-meta">
+                    <a class="btn btn-theme effect btn-sm" href="#">View assessments</a>
+                    <h4>$23.00</h4>
+                    </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Popular Courses -->
+<!-- Start Event
+============================================= -->
+<div class="event-area flex-less default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="site-heading text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>@Model.StaticPage.Contents[4].LocalizedName</h2>
+                    <p>
+                        @Html.Raw(Model.StaticPage.Contents[4].LocalizedDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="event-items">
+                <!-- Single Item -->
+                @for (int i = 0; i < Model.Events.Count && i < 2; i++)
+                {
+                    var item = Model.News[i];
+                    <div class="col-md-6 col-sm-6 equal-height">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="/img/800x600.jpg" alt="Thumb">
+                            </div>
+                            <div class="info">
+                                <div class="info-box">
+                                    <div class="date">
+                                        <strong>@item.PublishDate.Value.Day</strong> @item.PublishDate.Value.ToString("MMM, yyyy")
+                                    </div>
+                                    <div class="content">
+                                        <h4>
+                                            <a href="~/Event/@item.Name">@item.Name </a>
+                                        </h4>
+                                        <ul>
+                                            <li><i class="fas fa-clock"></i> 8:00 - 16:00</li>
+                                            <li><i class="fas fa-map-marked-alt"></i> Amman, Jordaan</li>
+                                        </ul>
+                                        <p>
+                                            @Html.Raw(item.Description)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <!-- End Single Item -->
+                <!-- Single Item -->
+                @*<div class="col-md-6 col-sm-6 equal-height">
+                <div class="item">
+                <div class="thumb">
+                <img src="img/800x600.jpg" alt="Thumb">
+                </div>
+                <div class="info">
+                <div class="info-box">
+                <div class="date">
+                <strong>08</strong> Nov, 2021
+                </div>
+                <div class="content">
+                <h4>
+                <a href="#">Event Name Here </a>
+                </h4>
+                <ul>
+                <li><i class="fas fa-clock"></i> 10:00 - 14:00</li>
+                <li><i class="fas fa-map-marked-alt"></i> Amman, Jordaan</li>
+                </ul>
+                <p>
+                Text here text here text here text here text here text here text here text here text here text here text here Text here text here text here text here text here text here
+                </p>
+
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>*@
+                <!-- End Single Item -->
+            </div>
+            <div class="more-btn col-md-12 text-center">
+                <a href="~/home/Events" class="btn btn-theme effect btn-md">@Localizer["ViewAllEvents"]</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Event -->
+<!-- Start Fun Factor
+============================================= -->
+<div class="fun-factor-area default-padding text-center bg-fixed shadow dark-hard" style="background-image: url(/img/2440x1578c.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 item">
+                <div class="fun-fact">
+                    <div class="icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="info">
+                        <span class="timer" data-to="8970" data-speed="5000"></span>
+                        <span class="medium"> @Localizer["SolvedQuestions"]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 item">
+                <div class="fun-fact">
+                    <div class="icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="info">
+                        <span class="timer" data-to="712" data-speed="4000"></span>
+                        <span class="medium"> @Localizer["NoOfVisitor"]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 item">
+                <div class="fun-fact">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="info">
+                        <span class="timer" data-to="128" data-speed="3000"></span>
+                        <span class="medium"> @Localizer["BestTeachers"]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 item">
+                <div class="fun-fact">
+                    <div class="icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="info">
+                        <span class="timer" data-to="640" data-speed="3500"></span>
+                        <span class="medium"> @Localizer["Assessments"]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Fun Factor -->
+<!-- Start Blog
+============================================= -->
+<div class="blog-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="site-heading text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>@Model.StaticPage.Contents[5].LocalizedName</h2>
+                    <p>
+                        @Html.Raw(Model.StaticPage.Contents[5].LocalizedDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="blog-items">
+                <!-- Single Item -->
+                @for (int i = 0; i < Model.News.Count && i < 3; i++)
+                {
+                    var item = Model.News[i];
+                    <div class="col-md-4 float-right single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="/img/800x600.jpg" alt="Thumb">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <div class="meta">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fas fa-user"></i> @item.Writer?.Name</a>
+                                        </li>
+                                        <li><i class="fas fa-calendar-alt"></i> @item.PublishDate.Value.ToString("dd MMM yyyy") </li>
+                                    </ul>
+                                </div>
+                                <div class="content">
+
+                                    <h4>
+                                        <a href="~/home/SingleNews/@item.Id">@item.Name</a>
+                                    </h4>
+                                    @Html.Raw(item.Description)
+                                    <a href="~/home/SingleNews/@item.Id"><i class="fas fa-plus"></i> @Localizer["ReadMore"]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <!-- End Single Item -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Blog -->
+
+<div class="newsletter-area fixed">
+    <div class="container">
+        <div class="subscribe-items shadow theme-hard default-padding bg-cover" style="background-image: url(/img/11.jpg);">
+            <div class="row w-100">
+                <div class="col-md-7 left-info">
+                    <div class="info-box">
+                        <div class="icon">
+                            <i class="flaticon-email"></i>
+                        </div>
+                        <div class="info">
+                            <h3>@Model.StaticPage.Contents[6].LocalizedName</h3>
+                            <p>
+                                @Html.Raw(Model.StaticPage.Contents[6].LocalizedDescription)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="email" placeholder="@Localizer["EnterEmail"]" class="form-control" name="email">
+                            <button type="submit">
+                                 @Localizer["Subscribe"] <i class="fa fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.js"></script>
+    <script src="/js/vue-components/components.js"></script>
+    <script src="/js/vue-components/apiService.js"></script>
+    <script src="/js/pages/index-page.js"></script>
+    <script src="/js/vue-components/vue-base.js"></script>
+    <script>
+        var options = { baseurl: "@Url.Content("~/")", apiurl: "@ViewBag.ApiUrl" };
+        vue.init(options);
+    </script>
+}
+@*    <script>
+        
+            $(".CorseSelect").click(function () {
+                $(".CorseSelect").addClass("active");
+            });
+        
+    </script>
+}*@
+

@@ -1,0 +1,273 @@
+﻿@using IbtecarFramework
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Identity
+@inject IHtmlLocalizer<SharedResource> Localizer
+@model Imtihani.Models.ProgramsViewModel
+@{
+    ViewData["Title"] = "Programs";
+    string path = Context.Request.Path.Value + Context.Request.QueryString.Value;
+    int subjectId = ViewBag.subjectId;
+    int gradeId = ViewBag.gradeId;
+    string PriceDesc = "PriceDesc";
+    string PriceAsc = "PriceAsc";
+    string DateDesc = "DateDesc";
+    string culture = CultureHelper.GetCurrentCulture();
+    bool islogin = ViewBag.islogin;
+    var assessments = ViewBag.assessments;
+}
+<style>
+    .search-content {
+        padding: 0px;
+        border: 0px;
+        background: none !important ;
+    }
+    .search-row{
+        display:flex;
+        justify-content:space-between;
+        align-items: center; 
+        margin-bottom:24px;
+    }
+    .input-search{
+    border-radius:4px !important;
+    min-height:45px!important;
+    border:1px solid #efefef !important;
+    }
+    .btn-search{
+    min-height:34px !important;
+    background:#fff !important;
+    padding:0 10px!important;
+    }
+
+
+</style>
+@await  Html.PartialAsync("_VueTemplates")
+<div class="blog-area single full-blog left-sidebar full-blog default-padding">
+    <div class="container" id="app">
+        <programs-page inline-template v-on:created="handlecreate">
+            <div class="row">
+                <div class="blog-items">
+                    <div class="blog-content col-md-8">
+
+                        <div class="row search-row" >
+                            <div class="col-md-10">
+                                <div class="search-content">
+                                    <form  style="margin-top: 0!important;">
+                                        <input type="text" v-model="keyword" class="form-control input-search" @@input="changeKeywordAssesment">
+                                        <button class="btn-search" type="button" >
+                                            <i style="color:#ffb606;" class="fa fa-search" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div style="" class="dropdown fa-pull-right">
+                                    <button style="min-height:45px;"class=" btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        @Localizer["SortBy"]
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="CursorPointer">
+                                        <li><a v-on:click="sortBY('@DateDesc')">@Localizer["HighestRated"] </a></li>
+                                        <li><a v-on:click="sortBY('@DateDesc')">@Localizer["Newest"]</a></li>
+                                        <li><a v-on:click="sortBY('@PriceAsc')">@Localizer["LowestPrice"]</a></li>
+                                        <li><a v-on:click="sortBY('@PriceDesc')">@Localizer["HighestPrice"]</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div v-for="assessment in assessments" class="col-lg-4 col-md-4">
+                                <div v-if="assessment.questionCount>0" class="fcrse_1 ">
+                                    @if (islogin)
+                                    {
+                                    <a :href="'https://assessment.365exams.com?assessmentId=' + assessment.id" 
+                                    class="fcrse_img" target="_blank">
+                                        <img src="~/img/800x600.jpg" alt="Thumb">
+                                        <div class="course-overlay">
+                                            @*<div class="badge_seller">Bestseller</div>*@
+                                            @*<div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                                </div>*@
+                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                            <div class="crse_timer">
+                                                {{assessment.duration}} @Localizer["Minutes"]
+                                            </div>
+                                        </div>
+                                    </a>
+                                    }
+                                    else{
+                                        <a :href="'@Url.Content("~/Account/Login")'"
+                                           class="fcrse_img" target="_blank">
+                                            <img src="~/img/800x600.jpg" alt="Thumb">
+                                            <div class="course-overlay">
+                                                @*<div class="badge_seller">Bestseller</div>*@
+                                                @*<div class="crse_reviews">
+                                                <i class="uil uil-star"></i>4.5
+                                                </div>*@
+                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                <div class="crse_timer">
+                                                    {{assessment.duration}} @Localizer["Minutes"]
+                                                </div>
+                                            </div>
+                                        </a>
+                                     }
+                                    <div class="fcrse_content">
+                                        <div class="eps_dots more_dropdown">
+                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class="uil uil-share-alt"></i>Share</span>
+                                                <span><i class="uil uil-clock-three"></i>Save</span>
+                                                <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                <span><i class="uil uil-windsock"></i>Report</span>
+                                            </div>
+                                        </div>
+                                        @if (islogin) { 
+
+                                        <a :href="'https://assessment.365exams.com?assessmentId=' + assessment.id" class="crse14s dot" target="_blank">
+                                            @(culture == "en-US" ? "{{ assessment.name}}" : "{{ assessment.nameAr}}")
+                                            
+                                        </a>
+                                        }
+                                        else{
+                                            <a :href="'@Url.Content("~/Account/Login")'" class="crse14s dot">
+                                                @(culture == "en-US" ? "{{ assessment.name}}" : "{{ assessment.nameAr}}")
+
+                                            </a>
+                                        }
+                                        <div class="crse-cate">
+                                            <span class="CursorPointer" sty v-on:click="setgrade(assessment.gradeId)"> @(culture == "en-US" ? "{{ assessment.gradeName}}" : "{{ assessment.gradeNameAr}}")</span> | <span class="CursorPointer" v-on:click="setsubject(assessment.subjectId)"> @(culture == "en-US" ? "{{ assessment.subjectName}}" : "{{ assessment.subjectNameAr}}")</span>
+                                        </div>
+                                        <div class="auth1lnkprce d-flex flex-row">
+                                            <div class="justify-content-start"><p class="tutor-footer">By <a :href="'/teacher/' + assessment.instructorName">{{assessment.instructorName}}  </a></p></div>
+                                            <div class="justify-content-end">
+                                                <div v-if="assessment.price == null || assessment.price ==0" class="prce142">
+                                                    Free @*<i class="fa fa-heart fa-2" aria-hidden="true" style="color: #cccccc;"></i>*@
+                                                </div>
+                                                <div v-else class="prce142">
+                                                    {{assessment.price}}JD @*<i class="fa fa-heart fa-2" aria-hidden="true" style="color: #cccccc;"></i>*@
+                                                </div>
+                                                <button class="shrt-cart-btn" title="cart"><i class="uil uil-shopping-cart-alt"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pagi-area">
+                                <nav aria-label="navigation">
+                                    <ul class="pagination">
+                                        <li><a href="javascript:void('')" v-on:click="gotopage(1)"><i class="fas fa-angle-double-left"></i></a></li>
+                                        <li v-for="index in pagescount"><a href="javascript:void('')" v-on:click="gotopage(index)">{{index}}</a></li>
+                                        <li><a href="javascript:void('')" v-on:click="gotopage(pagescount)"><i class="fas fa-angle-double-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Start Blog Comment -->
+                        <!-- End Comments Form -->
+                    </div>
+                    <!-- Start Sidebar -->
+                    <div class="sidebar col-md-4">
+                        <aside>
+                            <div class="sidebar-item category">
+                                <div class="title">
+                                    <h4><i class="fa fa-filter fa-2" aria-hidden="true"></i> @Localizer["system"] </h4>
+                                </div>
+                                <div class="sidebar-info">
+                                    <ul>
+                                        <li><label><input type="radio" name="optsystem" checked v-on:click="setsystem('')">  @Localizer["All"]  </label>
+                                            <span>@Model.Counts.Sum(s=>s.Count)</span>
+                                            @* <span>@ViewBag.assessments.Where(a => a.[IsActive] == 1).ToList();</span> *@
+                                        </li>
+                                        @for (int i = 0; i < Model.Countries.Count; i++)
+                                        {
+                                            var item = Model.Countries[i];
+                                            <li><label><input type="radio" name="optsystem" v-on:click="setsystem(@item.Id)"> @item.LocalizedName </label> <span>@Model.Counts.Where(s=>s.CategoryId == item.Id).Sum(s=>s.Count)</span></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-item category">
+                                <div class="title">
+                                    <h4><i class="fa fa-filter fa-2" aria-hidden="true"></i>@Localizer["Subject"]</h4>
+                                </div>
+                                <div class="sidebar-info">
+                                    <ul>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="optsubject" checked v-on:click="setsubject('')"> @Localizer["All"] 
+                                                </label>
+                                            <span>@Model.Counts.Sum(s=>s.Count)</span>
+                                        </li>
+
+                                        @for (int i = 0; i < Model.Subjects.Count; i++)
+                                        {
+                                            var item = Model.Subjects[i];
+                                            <li>
+                                                <label>
+                                                    <input type="radio" name="optsubject" v-on:click="setsubject(@item.Id)">
+                                                            @(culture == "en-US" ? item.Name : item.NameAr) 
+                                            </label>
+                                                <span>@Model.Counts.Where(s=>s.SubjectId == item.Id).Sum(s=>s.Count)</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sidebar-item category">
+                                <div class="title">
+                                    <h4><i class="fa fa-filter fa-2" aria-hidden="true"></i> @Localizer["Price"]</h4>
+                                </div>
+                                <div class="sidebar-info">
+                                    <ul>
+                                        <li><label><input type="radio" name="optprice" checked v-on:click="setpricerange('', '')">  @Localizer["All"]  </label> <span>@Model.Counts.Sum(s=>s.Count)</span></li>
+                                        @for (int i = 0; i < Model.PriceRanges.Count; i++)
+                                        {
+                                            var item = Model.PriceRanges[i];
+                                            <li>
+                                                @if (item.Max == 0)
+                                                {
+                                                    <label><input type="radio" name="optprice" v-on:click="setpricerange(0, 0)"> @(culture == "en-US" ? item.Name : item.NameAr) </label> <span>@Model.Counts.Where(s=>!s.Price.HasValue || s.Price.Value == 0).Sum(s=>s.Count)</span>
+                                                }
+                                                else
+                                                {
+                                                    <label><input type="radio" name="optprice" v-on:click="setpricerange(@item.Min, @item.Max)"> @(culture == "en-US" ? item.Name : item.NameAr) </label> <span>@Model.Counts.Where(s=>s.Price.HasValue && s.Price.Value >= item.Min && s.Price.Value <= item.Max).Sum(s=>s.Count)</span>
+                                                }
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </aside>
+                    </div>
+                    <!-- End Start Sidebar -->
+                </div>
+            </div>
+        </programs-page>
+    </div>
+</div>
+
+@section scripts
+{
+<script src="/js/vue.js"></script>
+<script src="/js/axios.js"></script>
+<script src="/js/vue-components/components.js"></script>
+<script src="/js/vue-components/apiService.js"></script>
+<script src="/js/vue-components/programs-page.js"></script>
+<script src="/js/vue-components/vue-base.js"></script>
+
+    <script>
+
+    </script>
+        <script>
+            var options = { baseurl: "@Url.Content("~/")", apiurl: "@ViewBag.ApiUrl" };
+            
+        vue.init({ ...options, subjectId: @subjectId, gradeId: @gradeId});
+        </script>  
+}

@@ -1,0 +1,120 @@
+﻿@using IbtecarFramework
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+@model TeachersPageViewModel
+@{
+    string culture = CultureHelper.GetCurrentCulture();
+}
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<!-- Start Advisor
+    ============================================= -->
+<div class="advisor-details-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="advisor-info">
+                <!-- Start Thumbnail -->
+                <div class="col-md-5">
+                    <div class="thumb">
+                        <img src="~/img/2.jpg" alt="Thumb">
+                        <div class="info">
+                            <h4>@Model.Teacher.Name</h4>
+                            <p>
+                                @Model.Teacher.Position
+                            </p>
+                            @*<p>
+                                Jordan - Amman
+                            </p>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- End Thumbnail -->
+                <!-- Start Content -->
+                <div class="col-md-7 content">
+                    <div class="course-info-list">
+                        <ul>
+                            <li>
+                                <h2>@Model.AssessmentCount</h2>
+                                <h5>@Localizer["CoursesAuthored"]</h5>
+                            </li>
+                            <li>
+                                <h2>120+</h2>
+                                <h5>@Localizer["StudentEnrolled"]</h5>
+                            </li>
+                            <li>
+                                <h2>4.5</h2>
+                                <h5>@Localizer["AVGRating"]</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Star Tab Info -->
+                    <div class="tab-info">
+                        <!-- Tab Nav -->
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                <a data-toggle="tab" href="#tab1" aria-expanded="true">
+                                    @Localizer["AboutMe"]
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#tab2" aria-expanded="false">
+                                    @Localizer["AssessmentsRelated"]
+                                </a>
+                            </li>
+
+                        </ul>
+                        <!-- End Tab Nav -->
+                        <!-- Start Tab Content -->
+                        <div class="tab-content tab-content-info">
+                            <!-- Single Tab -->
+                            <div id="tab1" class="tab-pane fade active in">
+                                <div class="info title">
+                                    @Html.Raw(Model.Teacher.Description)
+                                </div>
+                            </div>
+                            <!-- End Single Tab -->
+                            <!-- Single Tab -->
+                            <div id="tab2" class="tab-pane fade">
+                                <div class="info title">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>@Localizer["NO."]</th>
+                                                    <th>@Localizer["Name"]</th>
+                                                    <th>@Localizer["Grade"]</th>
+                                                    <th>@Localizer["Topic"]</th>
+                                                    <th>@Localizer["Assessment"]</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @for (int i = 0; i < Model.Assessments.Count; i++)
+                                                {
+                                                    var item = Model.Assessments[i];
+                                                    <tr>
+                                                        <td>@((i+1).ToString("##")).</td>
+                                                        <td><a href="https://assessment.365exams.com/?assessmentId=@item.Id"> @(culture == "en-US" ? item.Name : item.NameAr)</a></td>
+                                                        <td>@(culture == "en-US" ? item.GradeName : item.GradeNameAr)</td>
+                                                        <td>@(culture == "en-US" ? item.SubjectName : item.SubjectNameAr)</td>
+                                                        <td>@(culture == "en-US" ? item.TopicName : item.TopicNameAr)</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Tab -->
+                        </div>
+                        <!-- End Tab Content -->
+                    </div>
+                    <!-- End Tab Info -->
+
+                </div>
+                <!-- End Content -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Advisor -->

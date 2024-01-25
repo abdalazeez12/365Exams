@@ -1,0 +1,165 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+
+@model ContactPageViewModel
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<!-- Start Contact Info
+   ============================================= -->
+<div class="contact-info-area default-padding">
+    <div class="container">
+        <!-- Start Contact Info -->
+        <div class="contact-info text-center">
+            <div class="row">
+                @for(int i=0; i < Model.StaticPage.Contents.Count ;i++){
+                    <div class="col-md-4 col-sm-4">
+                        <div class="item">
+                            <div class="icon">
+                                <i class="flaticon-call"></i>
+                            </div>
+                            <div class="info">
+                                <h4>@Model.StaticPage.Contents[i].LocalizedName</h4>
+                                <span>@Model.StaticPage.Contents[i].LocalizedShort</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+             
+          
+            </div>
+        </div>
+        <!-- End Contact Info -->
+
+        <div class="row contact-bottom-info">
+            <!-- Start Maps & Contact Form -->
+            <div class="maps-form">
+                <div class="col-md-6 maps">
+                    <h4>@Localizer["OurLocation"]</h4>
+                    <div class="google-maps">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.4814895521527!2d35.86542068443378!3d31.97496063175181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf2f159d2988997bd!2zMzHCsDU4JzI5LjgiTiAzNcKwNTEnNDcuNiJF!5e0!3m2!1sar!2sjo!4v1673275097503!5m2!1sar!2sjo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6 form">
+                    <div class="heading">
+                        <h4>@Localizer["ContactUs"]</h4>
+                    </div>
+                    <form method="post" class="contact-form">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="form-group">
+                                    <input class="form-control" id="FullName" name="FullName" placeholder="@Localizer["Name"]" type="text">
+                                    <span class="alert-error"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="form-group">
+                                    <input class="form-control" id="Email" name="Email" placeholder="@Localizer["Email"]" type="email">
+                                    <span class="alert-error"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="form-group">
+                                    <input class="form-control" id="Phone" name="Phone" placeholder="@Localizer["Phone"]" type="text">
+                                    <span class="alert-error"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="form-group comments">
+                                    <textarea class="form-control" id="Description" name="Description" placeholder="@Localizer["TellMe"]" ...></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <button type="submit" name="send" id="send">
+                                    @Localizer["SendMessage"] <i class="fa fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Alert Message -->
+                        <div class="col-md-12 alert-notification">
+                            <div id="message" class="alert-msg"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Maps & Contact Form -->
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script>
+    document.getElementById('send').addEventListener('click', (e) => {
+        e.preventDefault();
+        ContactUs();
+    })
+
+    function ContactUs() {
+        
+        var FullName = $("#FullName").val().trim();
+        var Email = $("#Email").val().trim();
+        var Phone = $("#Phone").val().trim();
+        var Description = $("#Description").val().trim();
+
+        if (FullName == "" || Email == "" || Phone == "" || Description == "") {
+            swal(
+                "Warning",
+                'Please Fill Out All Fields',
+                'warning'
+            )
+        } else {
+            let data = { FullName: FullName, Email: Email, Phone: Phone, Description: Description }
+           
+            $('#send')
+                .after('<img src="/img/ajax-loader.gif" class="loader" />')
+                .attr('disabled', 'disabled');
+            $('#send').removeAttr('disabled');
+            $.ajax({
+                type: "POST",
+                url: "api/Auth/ContactUs",
+                data: (data),
+                dataType: "json",
+
+                success: function (data) {
+                   
+                $('.contact-form img.loader').fadeOut('slow', function () {
+                $(this).remove()
+                });
+                $('#send').removeAttr('disabled');
+
+                swal(
+                'Done',
+                'Message Sent Successfully',
+                'success'
+                );
+
+                },
+                error:
+                    function (err, msg) {
+
+                        swal(
+                            'Ops !',
+                            'Something Went Wrong, Please Try Again Later',
+                            'error'
+                        )
+
+                    }
+            });
+        }
+    }
+
+</script>
+}
+<!-- End Contact Info -->
+<!-- Start Newsletter
+============================================= -->
+<!-- End Newsletter -->

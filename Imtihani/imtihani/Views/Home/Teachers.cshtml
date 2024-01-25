@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+@model TeachersPageViewModel
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<div class="advisor-area bg-gray bottom-less bg-cover">
+    <div class="container">
+        <div class="row">
+            <div class="search-area text-center" style="margin-bottom: 20px;padding-top: 20px;">
+                <div class="container">
+                    <div class="search-course">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="search-content" style="padding:0px;border:0px;background:none;">
+                                <form action="~/home/teachers">
+                                    <input type="text" placeholder="@Localizer["EnterTeacherName"]" class="form-control" name="searchText">
+                                    <button type="submit">
+                                        @Localizer["SearchTeacher"]
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="advisor-items col-4 text-light text-center">
+                <!-- Single item -->
+                @for (int i = 0; i < Model.Teachers.Count; i++)
+                {
+                    var item = Model.Teachers[i];
+                    <div class="col-md-3 col-sm-6 single-item">
+                        <a href="~/teacher/@item.Name">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="@Url.Content(!string.IsNullOrEmpty(item.ImagePath.FileName)?item.ImagePath.FullName:"~/img/2.jpg")" alt="Thumb">
+                            </div>
+                            <div class="info">
+                                <span>@item.ExtraInfo @item.Position</span>
+                                <h4>@item.Name</h4>
+                                <div class="meta" style="text-align: center;">
+                                    <ul style="padding: 0px;">
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                }
+                <!-- End Single item -->
+            </div>
+        </div>
+    </div>
+</div>

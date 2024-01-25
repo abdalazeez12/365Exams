@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+@model HomeIndexViewModel
+@await Html.PartialAsync("_Breadcrumbs", Model)
+
+<!-- Start Event
+    ============================================= -->
+<div class="event-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+             
+                <div class="event-items">
+                    @for (int i = 0; i < Model.Events.Count(); i++)
+                    {
+                        var item = Model.Events[i];
+
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="col-md-5 thumb" style="background-image: url(@Url.Content("~/img/12.jpg")" );"></div>
+                            @*<div class="col-md-5 thumb" style="background-image: @item.ImagePath );"></div>*@
+                            <div class="col-md-7 info">
+                                <div class="info-box">
+                                    <div class="date">
+                                        <strong>@item.PublishDate.Value.Day</strong> @item.PublishDate.Value.ToString("MMM, yyyy")
+                                    </div>
+                                    <div class="content">
+                                        <h4>
+                                            <a href="/home/SingleNews/@item.Id">@item.Name</a>
+                                        </h4>
+                                        <ul>
+                                            <li><i class="fas fa-clock"></i> @item.PublishDate</li>
+@*                                            <li><i class="fas fa-map-marked-alt"></i> California, TX 70240</li>
+*@                                        </ul>
+                                        @Html.Raw(item.Description)
+                                        <div class="bottom">
+                                            <a href="/SingleNews/@item.Id" class="btn circle btn-dark border btn-sm">
+                                                <i class="fas fa-chart-bar"></i>@Localizer["ReadMore"]
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                    }
+                </div>
+            </div>
+            @* <div class="more-btn col-md-12 text-center">
+            <a href="#" class="btn btn-theme effect btn-md">Show More</a>
+            </div>*@
+        </div>
+    </div>
+</div>
+<!-- End Event -->

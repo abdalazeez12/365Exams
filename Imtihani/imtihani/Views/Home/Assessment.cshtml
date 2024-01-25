@@ -1,0 +1,198 @@
+﻿@model ContentPageViewModel
+@{
+    ViewData["Title"] = "Assessment";
+}
+<!-- Start Login
+   ============================================= -->
+<div class="login-area ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="certi_form rght1528">
+                    <div class="test_timer_bg">
+                        <ul class="test_timer_left">
+                            <li>
+                                <div class="timer_time">
+                                    <h4>20</h4>
+                                    <p>Questions</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="timer_time">
+                                    <h4 id="timer">60</h4>
+                                    <p>Minutes</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6">
+                <div class="certi_form">
+                    <div class="all_ques_lest">
+                        <div class="ques_item">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="ques_title">
+                                <span>Ques 1 :-</span>
+                                What is the name of the first page you encounter after logging into your web page?
+                            </div>
+                            <div class="ui form">
+                                <div class="grouped fields">
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example1" tabindex="0">
+                                            <label>Dashboard</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example1" tabindex="0">
+                                            <label>Security question page</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example1" tabindex="0">
+                                            <label>WP upgrade option</label>
+                                        </div>
+                                    </div>
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example1" tabindex="0">
+                                            <label>WPAdmin</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ques_item">
+                            <div class="ques_title">
+                                <span>Ques 2 :-</span>
+                                what is Wordpress?
+                            </div>
+                            <div class="ui search focus mt-15">
+                                <div class="ui form swdh30">
+                                    <div class="field">
+                                        <textarea rows="5" name="answer" id="id_answer" placeholder="Pls explain"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ques_item">
+                            <div class="ques_title">
+                                <span>Ques 3 :-</span>
+                                How can you get involved with WordPress?
+                            </div>
+                            <div class="ui form">
+                                <div class="grouped fields">
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="checkbox" name="example2" tabindex="0">
+                                            <label>Attend Word Camp</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="checkbox" name="example2" tabindex="0">
+                                            <label>Edit the Codex (documentation)</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="checkbox" name="example2" tabindex="0">
+                                            <label>Help in the Forums</label>
+                                        </div>
+                                    </div>
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="checkbox" name="example2" tabindex="0">
+                                            <label>All of these</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ques_item">
+                            <div class="ques_title">
+                                <span>Ques 4 :-</span>
+                                What ways to use WordPress?
+                            </div>
+                            <div class="ui form">
+                                <div class="grouped fields">
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example3" tabindex="0">
+                                            <label>Arcade</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example3" tabindex="0">
+                                            <label>Blog</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example3" tabindex="0">
+                                            <label>Content Management System (CMS)</label>
+                                        </div>
+                                    </div>
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example3" tabindex="0">
+                                            <label>All of the above</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ques_item">
+                            <div class="ques_title">
+                                <span>Ques 5 :-</span>
+                                What case we cannot recommend WordPress to our client?
+                            </div>
+                            <div class="ui form">
+                                <div class="grouped fields">
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example4" tabindex="0">
+                                            <label>If client is working on non-CMS base project</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example4" tabindex="0">
+                                            <label>If site wants complex or innovative e-commerce</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example4" tabindex="0">
+                                            <label>In case of enterprise intranet solution</label>
+                                        </div>
+                                    </div>
+                                    <div class="field fltr-radio">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="example4" tabindex="0">
+                                            <label>All of the above</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="test_submit_btn" type="submit">Next Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Login Area -->
+
+@section scripts
+{
+    <script src="js/test-timer.js"></script>
+}

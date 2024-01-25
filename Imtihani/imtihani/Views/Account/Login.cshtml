@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+
+<!-- Start Login
+============================================= -->
+<div class="login-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <form id="login-form" method="post" class="white-popup-block" action="/api/auth/login" onsubmit="return authservice.login('@TempData["ReturnUrl"]')">
+                    <div class="login-custom">
+                        <div class="row" style="display:none;">
+                            <div class="col-md-12">
+                                <button type="button" id="Google" class="btn btn-google waves-effect waves-light" name="provider" value="Google" title=" @Localizer["ContinueWithGoogle"]">
+                                    @Localizer["ContinueWithGoogle"]
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a asp-controller="Auth" asp-action="FacebookLogin" class="btn btn-facebook waves-effect waves-light" title=" @Localizer["ContinueWithFB"]">
+                                    @Localizer["ContinueWithFB"]
+                                </a>
+                            </div>
+                        </div>
+                        <div class="link-bottom2"><span>@Localizer["OR"]</span></div>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input name="Email" class="form-control" placeholder="@Localizer["Email"]*" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input name="Password" class="form-control" placeholder="@Localizer["Password"]*" type="password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="login-remember"><input type="checkbox" id="login-remember">@Localizer["RememberMe"] </label>
+                                <a title="Forgot Password" href="~/Account/ForgotPassword" class="lost-pass-link"> @Localizer["ForgetYourPassword"]?</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn-login">
+                                    @Localizer["Login"]
+                                </button>
+                            </div>
+                        </div>
+                        <p class="link-bottom">@Localizer["NotRememberYet"]? <a href="~/Account/Register">@Localizer["RegisterNow"]</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Login Area -->
+@section scripts
+    {<script src="/js/axios.js"></script>
+<script src="/js/vue-components/authService.js"></script>
+
+}

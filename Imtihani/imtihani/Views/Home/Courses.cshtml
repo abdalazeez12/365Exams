@@ -1,0 +1,84 @@
+﻿@model CoursesPageViewModel
+
+<!-- Start Popular Courses -->
+<div class="popular-courses-area active-dots carousel-shadow weekly-top-items " style="margin-top: 50px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs ">
+                            @for (int i = 0; i < Model.Grades.Count; i++)
+                            {
+                                var item = Model.Grades[i];
+                                <li class="@(item.Id == Model.ActiveGrade? "active" : "")">
+                                    <a href="@("#Grade" + item.Id)" data-toggle="tab">
+                                        @item.LocalizedName
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                        <div class="tab-content">
+                            @for (int i = 0; i < Model.Grades.Count; i++)
+                            {
+                                var grade = Model.Grades[i];
+                                var grades = Model.Assessments.Where(s => s.GradeId == grade.Id).ToList();
+                                <div class="tab-pane @(grade.Id == Model.ActiveGrade? "active" : "")" id="@("Grade" + grade.Id)">
+                                    <div class="col-md-12">
+                                        <div style="float: left" class="top-course-items courses-carousel owl-carousel owl-theme">
+                                            @for (int j = 0; j < grades.Count; j++)
+                                            {
+                                                var assessment = grades[j];
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <img src="/img/800x600.jpg" alt="Thumb">
+                                                        <div class="overlay">
+
+                                                            <ul>
+                                                                <li><i class="fas fa-clock"></i> @assessment.LocalizedGradeName</li>
+                                                                <li><i class="fas fa-clock"></i> @assessment.Duration</li>
+                                                                <li><i class="fas fa-list-ul"></i> @assessment.QuestionCount</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="lable-curve">@grade.LocalizedName</div>
+                                                        <h4>
+                                                            <a href="#">@(!string.IsNullOrEmpty(assessment.LocalizedSubjectName)? assessment.LocalizedSubjectName + " - " : "") @(!string.IsNullOrEmpty(assessment.LocalizedTopicName)? assessment.LocalizedTopicName + " - " : "") @assessment.LocalizedName </a>
+                                                        </h4>
+                                                        @Html.Raw(assessment.LocalizedDescription)
+                                                        @*<div class="meta">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#">Math</a>
+                                                                    <a href="#">131 skills</a>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star-half-alt"></i>
+                                                                    <span>(1k)</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>*@
+                                                        <div class="footer-meta">
+                                                            <a class="btn btn-theme effect btn-sm" href="https://Assessment.imtihani.com/@assessment.Id">View assessment</a>
+                                                            @*<h4>$23.00</h4>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Popular Courses -->

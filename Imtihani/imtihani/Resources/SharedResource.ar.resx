@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMe" xml:space="preserve">
+    <value>عني</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>نبذة عن</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>الموقع</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>الجميع</value>
+  </data>
+  <data name="AllRights" xml:space="preserve">
+    <value>©2022 الجبالي. كل الحقوق محفوظة</value>
+  </data>
+  <data name="AlreadyMember" xml:space="preserve">
+    <value>مسجل بالفعل</value>
+  </data>
+  <data name="AreYouCurrentlyWorking" xml:space="preserve">
+    <value>هل تعمل حاليأ</value>
+  </data>
+  <data name="Assessments" xml:space="preserve">
+    <value>الامتحانات</value>
+  </data>
+  <data name="AssessmentsRelated" xml:space="preserve">
+    <value>امتحانات ذات صلة</value>
+  </data>
+  <data name="AttachHighestUniversityCertificate" xml:space="preserve">
+    <value>ارفق شهادتك الجامعية</value>
+  </data>
+  <data name="AVGRating" xml:space="preserve">
+    <value>معدل التقييم</value>
+  </data>
+  <data name="BestTeachers" xml:space="preserve">
+    <value>افضل المدرسين</value>
+  </data>
+  <data name="BrowseMore" xml:space="preserve">
+    <value>تصفح المزيد</value>
+  </data>
+  <data name="CallUs" xml:space="preserve">
+    <value>اتصل بنا</value>
+  </data>
+  <data name="Cerfiticates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينه</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>تواصلوا معنا</value>
+  </data>
+  <data name="ContactYouSoon" xml:space="preserve">
+    <value>سيتم التواصل معك قريبا</value>
+  </data>
+  <data name="ContinueWithFB" xml:space="preserve">
+    <value>الاستمرار عن طريق الفيسبوك</value>
+  </data>
+  <data name="ContinueWithGoogle" xml:space="preserve">
+    <value>الاستمرار عن طريق جوجل</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="CountryOfResidence" xml:space="preserve">
+    <value>بلد الإقامة</value>
+  </data>
+  <data name="CoursesAuthored" xml:space="preserve">
+    <value>الدورات</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>تاريح الميلاد</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  <data name="DownloadCatalog" xml:space="preserve">
+    <value>تحميل الكاتلوج</value>
+  </data>
+  <data name="DownloadProductCatalogs" xml:space="preserve">
+    <value>قم بتنزيل كتالوجات منتجاتنا</value>
+  </data>
+  <data name="Ecatalog" xml:space="preserve">
+    <value>الكتالوج الإلكتروني</value>
+  </data>
+  <data name="Elementary" xml:space="preserve">
+    <value>ابتدائي</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="EmailTemplate" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;jabalyest&lt;/title&gt;
+    &lt;style&gt;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body style="font-family: tahoma,sans-serif;box-sizing: border-box;padding: 0;margin: 0;"&gt;
+    &lt;div style="width: 100% !important;min-width:100%;height:100vh !important;margin:0;padding:0" bgcolor="#D6D5D5"&gt;
+        &lt;table border="0" cellpadding="0" cellspacing="0" id="m_88" style="width:100%!important;height:100%!important;line-height:100%!important;border-spacing:0;border-collapse:collapse;margin:0;padding:0;border:none" bgcolor="#D6D6D5"&gt;
+            &lt;tr&gt;
+                &lt;td align="center" valign="center"&gt;
+                    &lt;table  width="100%" cellpadding="0" cellspacing="0" style="border-spacing:0;border-collapse:collapse;width:100%;max-width:690px;border:1px solid #AFAFAF" bgcolor="#fff"&gt;
+                        &lt;tr&gt;
+                            &lt;td align="center"&gt;
+                                 &lt;img src="http://jabalyest.com/wsimages/Group%202058.png" style="width: 150px;margin:10px;" /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td align="center"&gt;
+                                &lt;table  border="0" cellpadding="0" cellspacing="0" style="border-spacing:0;border-collapse:collapse;width:95%;border:none" bgcolor="#F8F8F9"&gt;
+                                    &lt;tr style="background:#48afbb"&gt;
+                                        &lt;td colspan="2" style="width:100%;color:#fff;font-weight:bold;font-size:17px;padding: 2px 0;" align="center"&gt;&lt;/td&gt;
+                                    &lt;/tr&gt;
+                                    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Full Name: &lt;span&gt; {0}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                       
+                                    &lt;/tr&gt;
+ 				    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Phone: &lt;span&gt; {4}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                       
+                                    &lt;/tr&gt;
+                                    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Email: &lt;span&gt; {1}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                    &lt;tr style="background:#fff"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-bottom:35px;padding-top:15px;" align="left" colspan="2"&gt;
+                                            Message:&lt;br /&gt;
+                                            &lt;span style="font-weight:400;padding-top:2px;"&gt;
+                                                {3}
+                                            &lt;/span&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                    &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="EmailTemplatePrice" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;jabalyest&lt;/title&gt;
+    &lt;style&gt;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body style="font-family: tahoma,sans-serif;box-sizing: border-box;padding: 0;margin: 0;"&gt;
+    &lt;div style="width: 100% !important;min-width:100%;height:100vh !important;margin:0;padding:0" bgcolor="#D6D5D5"&gt;
+        &lt;table border="0" cellpadding="0" cellspacing="0" id="m_88" style="width:100%!important;height:100%!important;line-height:100%!important;border-spacing:0;border-collapse:collapse;margin:0;padding:0;border:none" bgcolor="#D6D6D5"&gt;
+            &lt;tr&gt;
+                &lt;td align="center" valign="center"&gt;
+                    &lt;table  width="100%" cellpadding="0" cellspacing="0" style="border-spacing:0;border-collapse:collapse;width:100%;max-width:690px;border:1px solid #AFAFAF" bgcolor="#fff"&gt;
+                        &lt;tr&gt;
+                            &lt;td align="center"&gt;
+                                 &lt;img src="http://jabalyest.com/wsimages/Group%202058.png" style="width: 150px;margin:10px;" /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td align="center"&gt;
+                                &lt;table  border="0" cellpadding="0" cellspacing="0" style="border-spacing:0;border-collapse:collapse;width:95%;border:none" bgcolor="#F8F8F9"&gt;
+                                    &lt;tr style="background:#48afbb"&gt;
+                                        &lt;td colspan="2" style="width:100%;color:#fff;font-weight:bold;font-size:17px;padding: 2px 0;" align="center"&gt;&lt;/td&gt;
+                                    &lt;/tr&gt;
+                                    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Full Name: &lt;span&gt; {0}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                       
+                                    &lt;/tr&gt;
+				    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Company Name: &lt;span&gt; {1}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                       
+                                    &lt;/tr&gt;
+ 				    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Section: &lt;span&gt; {2}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                       
+                                    &lt;/tr&gt;
+                                    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Email: &lt;span&gt; {3}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+				    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Phone: &lt;span&gt; {6}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+				    &lt;tr style="background:#fff;line-height: 1 !important;"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-top:15px;" align="left"&gt;
+                                            Country: &lt;span&gt; {5}&lt;/span&gt;
+                                        &lt;/td&gt;
+                                       
+                                    &lt;/tr&gt;
+				   
+                                    &lt;tr style="background:#fff"&gt;
+                                        &lt;td style="color:#000;font-weight:bold;font-size:13px;padding-bottom:35px;padding-top:15px;" align="left" colspan="2"&gt;
+                                            Message:&lt;br /&gt;
+                                            &lt;span style="font-weight:400;padding-top:2px;"&gt;
+                                                {4}
+                                            &lt;/span&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+ 				    
+                    &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="EmailUs" xml:space="preserve">
+    <value>بريدنا الالكتروني</value>
+  </data>
+  <data name="EnterCourseName" xml:space="preserve">
+    <value>أدخل اسم الدورة</value>
+  </data>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>ادخل بريدك الالكتروني</value>
+  </data>
+  <data name="EnterTeacherName" xml:space="preserve">
+    <value>ادخل اسم المعلم</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>حصلت مشكلة</value>
+  </data>
+  <data name="EventsAndNews" xml:space="preserve">
+    <value>الفعاليات والاخبار</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>الخبره</value>
+  </data>
+  <data name="Factory" xml:space="preserve">
+    <value>المصنع</value>
+  </data>
+  <data name="FactoryCapabilities" xml:space="preserve">
+    <value>امكانيات مصنعنا</value>
+  </data>
+  <data name="FactoryFacts" xml:space="preserve">
+    <value>حقائق عن المصنع</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>فشل</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>الاسم لأول</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>تابعونا</value>
+  </data>
+  <data name="ForgetYourPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>مجاني</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>الأسم الكامل</value>
+  </data>
+  <data name="GotoAnalysis" xml:space="preserve">
+    <value>انتقل إلى التحليل</value>
+  </data>
+  <data name="Grade" xml:space="preserve">
+    <value>الصف</value>
+  </data>
+  <data name="HelpFaq" xml:space="preserve">
+    <value>المساعدة والاسئله الشائعة</value>
+  </data>
+  <data name="HighestPrice" xml:space="preserve">
+    <value>الأكثر سعرآ</value>
+  </data>
+  <data name="HighestRated" xml:space="preserve">
+    <value>أعلى تقييم</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>المدرسة الثانوية</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>تاريخ</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسيه</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>مقدمة</value>
+  </data>
+  <data name="Jabaly" xml:space="preserve">
+    <value>مؤسسة الجبالي الصناعية</value>
+  </data>
+  <data name="JoinUs" xml:space="preserve">
+    <value>انضم لنا</value>
+  </data>
+  <data name="lang" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>الأسم الأحير</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="LowestPrice" xml:space="preserve">
+    <value>الأقل سعرآ</value>
+  </data>
+  <data name="Manufacturing" xml:space="preserve">
+    <value>التصنيع</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>التسويق والمبيعات</value>
+  </data>
+  <data name="MechanismOfAction" xml:space="preserve">
+    <value>الية العمل</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>نص الرسالة</value>
+  </data>
+  <data name="MiddleSchool" xml:space="preserve">
+    <value>المدرسة المتوسطة</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>دقائق</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>الجنسية</value>
+  </data>
+  <data name="Newest" xml:space="preserve">
+    <value>الأحدث</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="NO." xml:space="preserve">
+    <value>الرقم</value>
+  </data>
+  <data name="NoOfVisitor" xml:space="preserve">
+    <value>عدد الزوار</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>الملاحظة</value>
+  </data>
+  <data name="NotRememberYet" xml:space="preserve">
+    <value>لم تسجل بعد</value>
+  </data>
+  <data name="OR" xml:space="preserve">
+    <value>او</value>
+  </data>
+  <data name="OrganizationalChart" xml:space="preserve">
+    <value>الهيكل التنظيمي</value>
+  </data>
+  <data name="OurLocation" xml:space="preserve">
+    <value>موقعنا</value>
+  </data>
+  <data name="OurVision" xml:space="preserve">
+    <value>رؤيتنا</value>
+  </data>
+  <data name="ParchasingPolicy" xml:space="preserve">
+    <value> سياسة الشراء</value>
+  </data>
+  <data name="Passed" xml:space="preserve">
+    <value>اجتاز</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>المعلومات الشحصيه</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="PopularAssessment" xml:space="preserve">
+    <value>الامتحانات الشائعة</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
+  <data name="PriceRequest" xml:space="preserve">
+    <value>طلب عرض السعر</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="ProductDescription" xml:space="preserve">
+    <value>وصف المنتج</value>
+  </data>
+  <data name="ProductionDepartments" xml:space="preserve">
+    <value>أقسام الإنتاج</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>اسم  المنتج</value>
+  </data>
+  <data name="ProductNumber" xml:space="preserve">
+    <value>رقم المنتج</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>المنتجات</value>
+  </data>
+  <data name="ProductsServiceScope" xml:space="preserve">
+    <value>نطاق خدمة المنتجات</value>
+  </data>
+  <data name="ProductTechnicalBulletin" xml:space="preserve">
+    <value>النشرة الفنية للمنتج</value>
+  </data>
+  <data name="Purchased" xml:space="preserve">
+    <value>تم شراؤها</value>
+  </data>
+  <data name="PurchasedCourses" xml:space="preserve">
+    <value>الدورات المشتراة</value>
+  </data>
+  <data name="QualityDepartment" xml:space="preserve">
+    <value>اعمال قسم الجودة في الاغطية الزراعية</value>
+  </data>
+  <data name="qusai" xml:space="preserve">
+    <value>قصي</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>اقرأ المزيد</value>
+  </data>
+  <data name="RecommendedAssessment" xml:space="preserve">
+    <value>الامتحانات الموصى به</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>تسجيل الآن</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>اعد كلمة المرور</value>
+  </data>
+  <data name="RightsReserved" xml:space="preserve">
+    <value>جميع الحقوق محفوظه لدى</value>
+  </data>
+  <data name="School" xml:space="preserve">
+    <value>المدرسه</value>
+  </data>
+  <data name="SearchAssessments" xml:space="preserve">
+    <value>البحث عن امتحان</value>
+  </data>
+  <data name="SearchResults" xml:space="preserve">
+    <value>نتائج البحث</value>
+  </data>
+  <data name="SearchTeacher" xml:space="preserve">
+    <value>بحث عن المعلم</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>القسم</value>
+  </data>
+  <data name="SelectLevel" xml:space="preserve">
+    <value>اختر المستوى</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>ارسال الرسالة</value>
+  </data>
+  <data name="SendRequest" xml:space="preserve">
+    <value>ارسال طلب</value>
+  </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>عرض المزيد</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="SimilarProducts" xml:space="preserve">
+    <value>منتجات متشابهة</value>
+  </data>
+  <data name="Sizes" xml:space="preserve">
+    <value>المقاسات</value>
+  </data>
+  <data name="SolvedQuestions" xml:space="preserve">
+    <value>الأسئلة المحلولة</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>رتب حسب</value>
+  </data>
+  <data name="SpecialOfUs" xml:space="preserve">
+    <value>ما يميزنا</value>
+  </data>
+  <data name="StudentEnrolled" xml:space="preserve">
+    <value>طالب التحق</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>المادة</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>اشتراك</value>
+  </data>
+  <data name="SuccessPartners" xml:space="preserve">
+    <value>شركاء النجاح</value>
+  </data>
+  <data name="SupportSystem" xml:space="preserve">
+    <value>نظام الدعم</value>
+  </data>
+  <data name="system" xml:space="preserve">
+    <value>النظام</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>المعلم</value>
+  </data>
+  <data name="TellMe" xml:space="preserve">
+    <value>اخبرني</value>
+  </data>
+  <data name="TermsOfServices" xml:space="preserve">
+    <value>شروط الخدمة</value>
+  </data>
+  <data name="Topic" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="TotalPurchased" xml:space="preserve">
+    <value>إجمالي المشتريات</value>
+  </data>
+  <data name="TypeOfExperience" xml:space="preserve">
+    <value>اختر خبراتك</value>
+  </data>
+  <data name="UseAndRestrictions" xml:space="preserve">
+    <value>الاستخدام والقيود</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>الفيديو</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>عرض الجميع</value>
+  </data>
+  <data name="ViewAllEvents" xml:space="preserve">
+    <value>عرض جميع الاحداث</value>
+  </data>
+  <data name="ViewAssessments" xml:space="preserve">
+    <value>عرض الامتحان</value>
+  </data>
+  <data name="ViewGallery" xml:space="preserve">
+    <value>شاهد معرض الصور</value>
+  </data>
+  <data name="WatchVideo" xml:space="preserve">
+    <value>شاهد الفيديو</value>
+  </data>
+  <data name="WhoAljabaly" xml:space="preserve">
+    <value>من نحن</value>
+  </data>
+  <data name="WhyUs" xml:space="preserve">
+    <value>القيم</value>
+  </data>
+  <data name="Wishlist" xml:space="preserve">
+    <value>المفضلة</value>
+  </data>
+  <data name="YearsOfExperience" xml:space="preserve">
+    <value>سنوات الخبرة</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+</root>
