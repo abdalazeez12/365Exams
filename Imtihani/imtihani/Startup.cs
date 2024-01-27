@@ -25,6 +25,11 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
+using IbtecarBusiness.Articles;
+using IbtecarBusiness.Security;
+using IbtecarBusiness.Catalog;
+using IbtecarBusiness.Courses;
+using IbtecarBusiness.Core;
 
 
 
@@ -42,12 +47,12 @@ namespace Imtihani
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
-            services.AddArticlesModule(Configuration);
-            services.AddCoreModule(Configuration);
-            services.AddCatalogModule(Configuration);
-            services.AddCoursesModule(Configuration);
-            services.AddSecurityModule(Configuration);
+
+            new CoreModule().AddModule(services, Configuration);
+            new ArticlesModule().AddModule(services, Configuration);
+            new CatalogModule().AddModule(services, Configuration);
+            new CoursesModule().AddModule(services, Configuration);
+            new SecurityModule().AddModule(services, Configuration);
             services.AddMixedTokenServices(Configuration);
 
             //services.AddScoped<EmailService>();
@@ -108,8 +113,8 @@ namespace Imtihani
 
             app.UseRouting();
 
-           
-            
+
+
             app.UseAuthorization();
             app.UseAuthentication();
             //app.UseMvc();
@@ -128,7 +133,7 @@ namespace Imtihani
                 endpoints.MapControllerRoute("Account",
                     "{controller=Account}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-            });  
+            });
 
 
         }

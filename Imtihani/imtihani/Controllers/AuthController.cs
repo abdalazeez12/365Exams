@@ -11,7 +11,6 @@ using Imtihani.Models;
 using Imtihani.Models.Requests;
 using Imtihani.Models.Responses;
 using Imtihani.Services;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +29,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static IbtecarFramework.Enums;
 using PasswordVerificationResult = Microsoft.AspNetCore.Identity.PasswordVerificationResult;
-using Facebook;
 using Org.BouncyCastle.Asn1.Crmf;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
@@ -112,7 +110,7 @@ namespace Imtihani.Controllers
                     if (User.Identity.IsAuthenticated )
                         Logoutvoid();
 
-                    var token = _jwtService.GetToken(responseContent.Email, responseContent.Email, responseContent.Id);
+                    var token = _jwtService.GetToken(responseContent.Email, responseContent.Email, responseContent.Name, responseContent.Id);
                     var ok = SetSession(responseContent.Id.ToString());
 
                     await SaveClaimsIdentity(user);
@@ -167,45 +165,45 @@ namespace Imtihani.Controllers
         //            return View("Error");
         //        }
         //}
-        public IActionResult FacebookLogin()
-        {
-            var appId = "346124578302792";
-            var redirectUri = "https://localhost:44355/api/Auth/FacebookCallback";
-            var scope = "public_profile,email";
+        //public IActionResult FacebookLogin()
+        //{
+        //    var appId = "346124578302792";
+        //    var redirectUri = "https://localhost:44355/api/Auth/FacebookCallback";
+        //    var scope = "public_profile,email";
 
-            var fb = new FacebookClient();
-            var loginUrl = fb.GetLoginUrl(new
-            {
-                client_id = appId,
-                redirect_uri = redirectUri,
-                scope = scope
-            });
+        //    var fb = new FacebookClient();
+        //    var loginUrl = fb.GetLoginUrl(new
+        //    {
+        //        client_id = appId,
+        //        redirect_uri = redirectUri,
+        //        scope = scope
+        //    });
 
-            return Redirect(loginUrl.ToString());
-        }
-        public IActionResult FacebookCallback(string code)
-        {
-            var appId = "346124578302792";
-            var appSecret = "ec83d2278052bd0dac7b41ec9be11d55";
-            var redirectUri = "https://localhost:44355/api/Auth/FacebookCallback";
-            var fb = new FacebookClient();
-            dynamic result = fb.Post("oauth/access_token", new
+        //    return Redirect(loginUrl.ToString());
+        //}
+        //public IActionResult FacebookCallback(string code)
+        //{
+        //    var appId = "346124578302792";
+        //    var appSecret = "ec83d2278052bd0dac7b41ec9be11d55";
+        //    var redirectUri = "https://localhost:44355/api/Auth/FacebookCallback";
+        //    var fb = new FacebookClient();
+        //    dynamic result = fb.Post("oauth/access_token", new
             
-            {
-                client_id = appId,
-                client_secret = appSecret,
-                redirect_uri = redirectUri,
-                code = code
-            });
-            var accessToken = result.access_token;
-            dynamic me = fb.Get("/me?fields=name,email&access_token=" + accessToken);
-            string name = me.name;
-            string email = me.email;
-            TempData["name"] = name;
-            TempData["email"] = email;
+        //    {
+        //        client_id = appId,
+        //        client_secret = appSecret,
+        //        redirect_uri = redirectUri,
+        //        code = code
+        //    });
+        //    var accessToken = result.access_token;
+        //    dynamic me = fb.Get("/me?fields=name,email&access_token=" + accessToken);
+        //    string name = me.name;
+        //    string email = me.email;
+        //    TempData["name"] = name;
+        //    TempData["email"] = email;
 
-            return RedirectToAction("LogORRegis", "Auth");
-        }
+        //    return RedirectToAction("LogORRegis", "Auth");
+        //}
         public async Task<IActionResult> LogORRegis()
         {
             ViewBag.name = TempData["name"].ToString();
@@ -272,7 +270,7 @@ namespace Imtihani.Controllers
             
             await _userService.AddAsync(user);
 
-            var token = _jwtService.GetToken(user.Email, user.Email, user.Id);
+            var token = _jwtService.GetToken(user.Email, user.Email, user.AliasName, user.Id);
 
             await SaveClaimsIdentity(user);
             LoginRequest userlogin = new LoginRequest();

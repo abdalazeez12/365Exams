@@ -10,7 +10,6 @@ using IbtecarFramework;
 using IbtecarModules.Jwt.Models;
 using Imtihani.Helpers;
 using Imtihani.Models;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -112,7 +111,7 @@ namespace Imtihani.Controllers
             model.Grades = (await _gradeService.ListAsync(null, new IbtecarFramework.PagingInfo(200), null)).OrderBy(s => s.Rank).ToList();
             model.Subjects = await _subjectService.ListAsync(new IbtecarFramework.PagingInfo(200), null);
             model.GradesDictionary = new Dictionary<int?, List<IbtecarBusiness.Courses.DataContracts.Grade>>();
-            model.PopularAssessments = await _assessmentService.ListAsync(null, null, null, null, null, null, new IbtecarFramework.PagingInfo(3), null);
+            model.PopularAssessments = await _assessmentService.ListAsync(null, null, null, null, null, null, true, new IbtecarFramework.PagingInfo(3), null);
             model.News = await _newsService.ListAsync(Lang(), null, 1, null, true, new IbtecarFramework.PagingInfo(3), null);
             model.Events = await _newsService.ListAsync(Lang(), null, 2, null, true, new IbtecarFramework.PagingInfo(3), null);
 
@@ -228,7 +227,7 @@ namespace Imtihani.Controllers
             model.StaticPage = await _staticPageService.GetByUniqueNameAsync("/Teacher");
             model.Teacher = await _instructorService.GetAsync(id);
             var paging = new PagingInfo(10, 1);
-            model.Assessments = await _assessmentService.ListAsync(null, null, null, model.Teacher.Id, null, null, paging, null);
+            model.Assessments = await _assessmentService.ListAsync(null, null, null, model.Teacher.Id, null, null, true, paging, null);
             model.AssessmentCount = paging.TotalItemCount;
             return View(model);
         }
@@ -424,9 +423,9 @@ WHERE
             ranges.Add(new PriceRange() { Min = 21, Max = 2000, Name = "21JD+", NameAr = "21JD+" });
             model.PriceRanges = ranges;
             model.Counts = await _assessmentService.GetAssessmentsCounts();
-            model.Assessments = await _assessmentService.ListAsync(null, null, subjectId, null, null, null, new IbtecarFramework.PagingInfo(200), subjectname);
+            model.Assessments = await _assessmentService.ListAsync(null, null, subjectId, null, null, null, true, new IbtecarFramework.PagingInfo(200), subjectname);
 
-            var assessments = await _assessmentService.ListAsync(null, null, null, null, null, null, new IbtecarFramework.PagingInfo(200), null);
+            var assessments = await _assessmentService.ListAsync(null, null, null, null, null, null, true,new IbtecarFramework.PagingInfo(200), null);
             ViewBag.assessments = assessments;
 
 
@@ -487,7 +486,7 @@ WHERE
         {
             var model = new CoursesPageViewModel();
 
-            model.Assessments = await _assessmentService.ListAsync(null, null, null, null, null, null, new IbtecarFramework.PagingInfo(3), null);
+            model.Assessments = await _assessmentService.ListAsync(null, null, null, null, null, null, true, new IbtecarFramework.PagingInfo(3), null);
 
             model.Assessments = model.Assessments.Where(assessment => assessment.GradeId > 80).ToList();
 
