@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>aspnet-Imtihani-CEC3F372-015E-4FB7-A7AB-E470F26EDE1A</UserSecretsId>
   </PropertyGroup>
 
@@ -63,20 +63,18 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.Authentication.Cookies.Owin" Version="1.0.0" />
     <PackageReference Include="Dapper" Version="2.1.28" />
-    <PackageReference Include="Facebook" Version="7.0.6" />
-    <PackageReference Include="IbtecarBusiness.Articles" Version="1.6.25" />
-    <PackageReference Include="IbtecarBusiness.Catalog" Version="1.6.25" />
-    <PackageReference Include="IbtecarBusiness.Core" Version="1.6.25" />
-    <PackageReference Include="IbtecarBusiness.Courses" Version="1.6.25" />
-    <PackageReference Include="IbtecarBusiness.Security" Version="1.6.25" />
-    <PackageReference Include="IbtecarFramework" Version="1.6.25" />
-    <PackageReference Include="IbtecarFramework.Abstractions" Version="1.6.25" />
-    <PackageReference Include="IbtecarFramework.Apis" Version="1.6.25" />
-    <PackageReference Include="IbtecarFramework.Persistance.EntityFramework" Version="1.6.25" />
-    <PackageReference Include="IbtecarModules.Jwt" Version="1.6.25" />
+    <PackageReference Include="IbtecarBusiness.Articles" Version="1.6.28" />
+    <PackageReference Include="IbtecarBusiness.Catalog" Version="1.6.28" />
+    <PackageReference Include="IbtecarBusiness.Core" Version="1.6.28" />
+    <PackageReference Include="IbtecarBusiness.Courses" Version="1.6.28" />
+    <PackageReference Include="IbtecarBusiness.Security" Version="1.6.28" />
+    <PackageReference Include="IbtecarFramework" Version="1.6.28" />
+    <PackageReference Include="IbtecarFramework.Abstractions" Version="1.6.28" />
+    <PackageReference Include="IbtecarFramework.Apis" Version="1.6.28" />
+    <PackageReference Include="IbtecarFramework.Persistance.EntityFramework" Version="1.6.28" />
+    <PackageReference Include="IbtecarModules.Jwt" Version="1.6.28" />
     <PackageReference Include="MailKit" Version="3.4.3" />
-    <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="7.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.26" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
@@ -87,12 +85,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.25.0" />
-    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.2" />
-    <PackageReference Include="Microsoft.Owin.Security.Cookies" Version="4.2.2" />
-    <PackageReference Include="Microsoft.Owin.Security.Facebook" Version="4.2.2" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.35.0" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.35.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -81,7 +81,7 @@ namespace Imtihani.Controllers
 
 
 
-                ViewBag.PopularAssessments = _assessmentService.ListAsync(null, null, null, null, null, null, new IbtecarFramework.PagingInfo(3), null).Result;
+                ViewBag.PopularAssessments = _assessmentService.ListAsync(null, null, null, null, null, null, true, new IbtecarFramework.PagingInfo(3), null).Result;
             }
 
             base.OnActionExecuting(context);
