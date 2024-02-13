@@ -51,7 +51,6 @@ namespace Imtihani.Controllers
         SiteSettings _siteSettings = new SiteSettings();
 
         private CountryService _CountryService;
-        private GradeService _GradeService;
 
         private IStringLocalizer<SharedResource> _sharedLocalizer;
 
@@ -400,7 +399,7 @@ WHERE
 
 
             var model2 = new IbtecarBusiness.Courses.DataContracts.Grade();
-            var grades = await _GradeService.ListAsync(null, new PagingInfo(200, 1), null);
+            var grades = await _gradeService.ListAsync(null, new PagingInfo(200, 1), null);
             var grades2 = new List<IbtecarBusiness.Courses.DataContracts.Grade>();
             ViewBag.Grades2 = grades2.ToSelectList("Id", "LocalizedName");
 

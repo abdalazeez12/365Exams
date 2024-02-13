@@ -67,7 +67,7 @@
     <PackageReference Include="IbtecarBusiness.Catalog" Version="1.6.28" />
     <PackageReference Include="IbtecarBusiness.Core" Version="1.6.28" />
     <PackageReference Include="IbtecarBusiness.Courses" Version="1.6.28" />
-    <PackageReference Include="IbtecarBusiness.Security" Version="1.6.28" />
+    <PackageReference Include="IbtecarBusiness.Security" Version="1.6.30" />
     <PackageReference Include="IbtecarFramework" Version="1.6.28" />
     <PackageReference Include="IbtecarFramework.Abstractions" Version="1.6.28" />
     <PackageReference Include="IbtecarFramework.Apis" Version="1.6.28" />
@@ -80,8 +80,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.26" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.26">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

@@ -335,11 +335,27 @@ namespace Imtihani.Controllers
             return Ok(new BaseResponse() { Success = true, Message = "Request Sent Successfully" });
         }
 
-        public async Task<IActionResult> EditProfile([FromForm] ExtraInfos request)
+        public async Task<IActionResult> EditProfile([FromForm] UserProfilInfo request)
         {
             var model = await _userService.GetAsync(request.Email);
-            model.AliasName = $"{request.FirstName}{request.LastName}";
-            model.ExtraInfo = $"{request.Nationality}{request.FirstName}{request.LastName}{request.Grade}";
+            if (!string.IsNullOrEmpty(model.ExtraInfo))
+            {
+                try
+                {
+                    UserExtraInfo info = JsonConvert.DeserializeObject<UserExtraInfo>(model.ExtraInfo);
+                    info.FirstName = request.FirstName;
+                    info.LastName = request.LastName;
+                    model.ExtraInfo = JsonConvert.SerializeObject(info);
+                }
+                catch 
+                {
+                    UserExtraInfo info = new UserExtraInfo();
+                    info.FirstName = request.FirstName;
+                    info.LastName = request.LastName;
+                    model.ExtraInfo = JsonConvert.SerializeObject(info);
+                }
+            }
+            model.AliasName = $"{request.FirstName} {request.LastName}";
             object value = await _userService.EditAsync(model);
             return RedirectToAction("StudentProfile", "Home");
         }
@@ -457,5 +473,13 @@ namespace Imtihani.Controllers
 
 
      
+    }
+
+    public class UserExtraInfo
+    {
+        public string Nationality { get; set; } = "Jordan";
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Grade { get; set; }
     }
 }
