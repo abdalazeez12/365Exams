@@ -39,6 +39,8 @@ namespace Imtihani.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _config;
         InstructorService _instructorService;
+        private readonly StudentAnalysisService _studentAnalysisService;
+
         SubjectService _subjectService;
         PhotoService _photoService;
         PartnerService _partnerService;
@@ -54,7 +56,23 @@ namespace Imtihani.Controllers
 
         private IStringLocalizer<SharedResource> _sharedLocalizer;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration config, PhotoService photoService, PartnerService partnerService, CategoryService categoryService, GradeService gradeService, AssessmentService assessmentService, InstructorService instructorService, SubjectService subjectService, MenuService menuService, StudentService studentService, UserService userService, NewsService newsService, IStringLocalizer<SharedResource> sharedLocalizer, StaticPageService staticPageService, IHttpContextAccessor context)
+        public HomeController(ILogger<HomeController> logger, 
+            IConfiguration config, 
+            PhotoService photoService, 
+            PartnerService partnerService, 
+            CategoryService categoryService, 
+            GradeService gradeService, 
+            AssessmentService assessmentService, 
+            InstructorService instructorService, 
+            SubjectService subjectService, 
+            MenuService menuService, 
+            StudentService studentService, 
+            UserService userService, 
+            NewsService newsService,
+            StudentAnalysisService studentAnalysisService,
+            IStringLocalizer<SharedResource> sharedLocalizer, 
+            StaticPageService staticPageService, 
+            IHttpContextAccessor context)
             : base(menuService, assessmentService, staticPageService, context)
         {
 
@@ -72,6 +90,7 @@ namespace Imtihani.Controllers
             _subjectService = subjectService;
             _menuService = menuService;
             _sharedLocalizer = sharedLocalizer;
+            _studentAnalysisService = studentAnalysisService;
             config.Bind("EmailSettings", _emailSettings);
             config.Bind("SiteSettings", _siteSettings);
         }
@@ -276,7 +295,9 @@ namespace Imtihani.Controllers
             var model = new StudentProfileViewModel();
             string email = User.Identity.GetUserEmail();
             model.User = await _userService.GetAsync(email);
-
+            var scores = await _studentAnalysisService.ListScoresAsync(model.User.Id, null, null);
+            var topics = await _studentAnalysisService.ListTopicsAsync(model.User.Id, null, null);
+            var times = await _studentAnalysisService.ListTimesAsync(model.User.Id, null, null);
             model.StaticPage = await _staticPageService.GetByUniqueNameAsync("/StudentProfile");
             using IDbConnection connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             string sql = @$"
